@@ -1,7 +1,6 @@
 import { getUser } from "@/lib/auth";
 import ChangeButton from "./components/changebutton";
 import getAdmins from "@/lib/admin";
-import Link from "next/link";
 
 export default async function Home() {
   const user = await getUser();
@@ -24,8 +23,8 @@ export default async function Home() {
       ) : (
         <>
           <div>Hello, {user.email}</div>
-          {isAdmin ? <ChangeButton /> : <p>View only</p>}
-          <div>{`TODO: implementasi 'ngubah tampilan website'`}</div>
+          <a href="/api/logout">logout</a>
+          {isAdmin ? <ChangeButton /> : <p>Login berhasil tapi bukan admin!</p>}
         </>
       )}
     </div>
