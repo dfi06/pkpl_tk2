@@ -43,5 +43,5 @@ export async function GET(req) {
     sameSite: "lax",
   });
 
-  return Response.redirect("http://localhost:3000");
+  return Response.redirect(process.env.WEBSITE_URL);
 }

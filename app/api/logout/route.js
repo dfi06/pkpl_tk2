@@ -4,5 +4,5 @@ export async function GET() {
   const cookieStore = await cookies();
   cookieStore.delete("oauth-state");
   cookieStore.delete("user");
-  return Response.redirect("http://localhost:3000");
+  return Response.redirect(process.env.WEBSITE_URL);
 }
