@@ -1,6 +1,7 @@
 import { getUser } from "@/lib/auth";
 import ChangeButton from "./components/changebutton";
 import getAdmins from "@/lib/admin";
+import { FcGoogle } from "react-icons/fc";
 
 export default async function Home() {
   const user = await getUser();
@@ -9,7 +10,9 @@ export default async function Home() {
   const isAdmin = admins.includes(user?.email);
 
   return (
-    <div className="space-y-4">
+    <div
+      className="space-y-4 h-screen flex flex-col items-center p-20"
+    >
       <ul>
         <li>{`Hammam Muhammad Mubarak – 2406401350`}</li>
         <li>{`Moch Raydzan – 2406432482`}</li>
@@ -19,12 +22,22 @@ export default async function Home() {
       </ul>
 
       {!user ? (
-        <a href="/api/login">Login with Google</a>
+        <a
+          href="/api/login"
+          className="bg-white text-black rounded-xl py-3 px-6 flex items-center gap-2 border"
+        >
+          <FcGoogle size={24} /> Login with Google
+        </a>
       ) : (
         <>
-          <div>Hello, {user.email}</div>
-          <a href="/api/logout">logout</a>
           {isAdmin ? <ChangeButton /> : <p>Login berhasil tapi bukan admin!</p>}
+          <div>Hello, {user.email}</div>
+          <a
+            href="/api/logout"
+            className="bg-white text-black rounded-xl py-3 px-6 flex items-center gap-2 border"
+          >
+            logout
+          </a>
         </>
       )}
     </div>
