@@ -2,15 +2,24 @@ import { getUser } from "@/lib/auth";
 import ChangeButton from "./components/changebutton";
 import getAdmins from "@/lib/admin";
 import { FcGoogle } from "react-icons/fc";
+import { getTheme } from "@/lib/redis";
 
 export default async function Home() {
   const user = await getUser();
-
   const admins = getAdmins();
   const isAdmin = admins.includes(user?.email);
+  const theme = await getTheme();
+
+  const bgColor = theme?.bgColor || "#000000";
+  const fontFamily = theme?.fontStyle || "sans-serif";
 
   return (
     <div
+      style={{
+        backgroundColor: bgColor,
+        fontFamily: fontFamily,
+        transition: "all 0.3s ease",
+      }}
       className="space-y-4 h-screen flex flex-col items-center p-20"
     >
       <ul>
