@@ -3,6 +3,7 @@ import ChangeButton from "./components/changebutton";
 import getAdmins from "@/lib/admin";
 import { FcGoogle } from "react-icons/fc";
 import { getTheme } from "@/lib/redis";
+import Image from "next/image";
 
 export default async function Home() {
   const user = await getUser();
@@ -20,14 +21,39 @@ export default async function Home() {
         fontFamily: fontFamily,
         transition: "all 0.3s ease",
       }}
-      className="space-y-4 h-screen flex flex-col items-center p-20"
+      className="space-y-4 h-fit flex flex-col items-center p-20"
     >
       <ul>
-        <li>{`Hammam Muhammad Mubarak – 2406401350`}</li>
-        <li>{`Moch Raydzan – 2406432482`}</li>
-        <li>{`Daffa Ismail – 2406434090`}</li>
-        <li>{`Muhammad Fadhil Al Afifi Fajar – 2406430104`}</li>
-        <li>{`Garuga Dewangga Putra Handikto – 2406437615`}</li>
+        <div className="flex items-center gap-4">
+          <div className="w-40 h-68 relative">
+            <Image src="/hammam.jpg" alt="" fill />
+          </div>
+          <li>{`Hammam Muhammad Mubarak – 2406401350 - Sistem Informasi`}</li>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="w-40 h-52 relative">
+            <Image src="/raydzan.jpg" alt="" fill />
+          </div>
+          <li>{`Moch Raydzan – 2406432482 - Sistem Informasi`}</li>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="w-40 h-38 relative">
+            <Image src="/daffa.jpeg" alt="" fill />
+          </div>
+          <li>{`Daffa Ismail – 2406434090 - Ilmu Komputer`}</li>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="w-40 h-52 relative">
+            <Image src="/fadhil.jpg" alt="" fill />
+          </div>
+          <li>{`Muhammad Fadhil Al Afifi Fajar – 2406430104 - Sistem Informasi`}</li>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="w-40 h-56 relative">
+            <Image src="/gar.jpg" alt="" fill />
+          </div>
+          <li>{`Garuga Dewangga Putra Handikto – 2406437615 - Sistem Informasi`}</li>
+        </div>
       </ul>
 
       {!user ? (
